@@ -1,0 +1,46 @@
+.hero {
+  margin-top: 30px;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+
+  min-height: 20vh;
+
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 70px;
+
+  font-weight: 700;
+}
+
+.hero span {
+  color: #ff4f8b;
+
+  animation: heartbeat 1.8s infinite;
+}
+
+.hero p {
+  margin-top: 15px;
+
+  opacity: 0.7;
+
+  font-size: 22px;
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+}

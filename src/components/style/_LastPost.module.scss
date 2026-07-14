@@ -1,0 +1,31 @@
+.homeBlock{
+    margin-top:60px;
+}
+
+.lastPosts{
+    display:flex;
+    gap:25px;
+    margin-top:20px;
+}
+
+.lastPost{
+
+    flex:1;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(15px);
+
+    transition:.3s;
+
+    &:hover{
+
+        transform:translateY(-6px);
+
+    }
+
+}

@@ -1,0 +1,48 @@
+
+.feed{
+
+    margin-top:70px;
+
+}
+
+.feed h2{
+
+    margin-bottom:30px;
+
+}
+
+.feedCard{
+
+    padding:25px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(20px);
+
+    margin-bottom:20px;
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.feedCard:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.feedHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:15px;
+
+    opacity:.7;
+
+}

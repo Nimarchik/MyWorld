@@ -1,0 +1,137 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  box-shadow: 0 0 10px rgba($color: #7c7c7c, $alpha: 0.5);
+  padding: 10px 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navList {
+  display: flex;
+  gap: 15px;
+}
+
+.logo {
+}
+
+.navList {
+}
+
+.navListItemLink {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    right: 0;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    background-color: $white;
+    box-shadow: 0 0 10px $white;
+    transition: all 0.4s;
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+      left: 0;
+    }
+  }
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nickName {
+  color: white;
+}
+
+.logout {
+  position: relative;
+  display: inline-block;
+  padding: 5px 10px;
+  border: 2px solid #fefefe;
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  transition: 0.3s;
+  background-color: transparent;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 6px);
+    height: calc(100% + 2px);
+    background-color: #212121;
+    transition: 0.3s ease-out;
+    transform: scaleY(1);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% - 20px);
+    background-color: #212121;
+    transition: 0.3s ease-out;
+    transform: scaleY(1);
+  }
+
+  &:hover {
+    border: 2px solid #fefefe;
+    &::before {
+      transform: translateY(-10px);
+      height: 0;
+    }
+    &::after {
+      transform: scaleX(0);
+      transition-delay: 0.15s;
+    }
+  }
+
+  .spn2 {
+    position: relative;
+    z-index: 3;
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+  }
+}
+
+.status{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    display:inline-block;
+    margin-right:8px;
+}
+
+.online{
+    background:#36ff36;
+    box-shadow:0 0 12px #36ff36;
+}
+
+.offline{
+    background:#777;
+}
+
+.navListItemLink {
+  cursor: pointer;
+}

@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Hachi+Maru+Pop&display=swap");
+
+$fontHachi: "Hachi Maru Pop", cursive;
+$fontConfort: "Comfortaa", sans-serif;
+$white: #fff;
+html,
+body,
+* {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+body {
+  background-color: #111;
+  font-family: $fontConfort;
+  font-style: normal;
+  font-weight: 400;
+  font-optical-sizing: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 1280px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+@mixin link {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    right: 0;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    background-color: $white;
+    box-shadow: 0 0 10px $white;
+    transition: all 0.4s;
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+      left: 0;
+    }
+  }
+}
+
+@mixin btn {
+  position: relative;
+  display: inline-block;
+  padding: 5px 10px;
+  border: 2px solid #fefefe;
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  transition: 0.3s;
+  background-color: transparent;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 6px);
+    height: calc(100% + 2px);
+    background-color: #212121;
+    transition: 0.3s ease-out;
+    transform: scaleY(1);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% - 20px);
+    background-color: #212121;
+    transition: 0.3s ease-out;
+    transform: scaleY(1);
+  }
+
+  &:hover {
+    border: 2px solid #fefefe;
+    &::before {
+      transform: translateY(-10px);
+      height: 0;
+    }
+    &::after {
+      transform: scaleX(0);
+      transition-delay: 0.15s;
+    }
+  }
+  .spn2 {
+    position: relative;
+    z-index: 3;
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #181414 inset !important;
+  -webkit-text-fill-color: #fff !important;
+  caret-color: #fff;
+}
+
+@import "../../Page/Main/styles/Home.module";
+@import "../../Page/Diary/styles/Diary.module";
+@import "../../Page/Statistic/styles/Statistic.module";
+@import "../../Page/Memories/styles/Memories.module";
+
+@import "../../components/style/Header.module";
+@import "../../components/style/Card.module";
+@import "../../components/style/Login.module";
+@import "../../components/style/Hero.module";
+@import "../../components/style/LastPost.module";
+@import "../../components/style/Stats.module";
+@import "../../components/style/Notification.module";
+@import "../../components/style/Feed.module";
+@import "../../components/style/MemoryCard.module";
+@import "../../components/style/ActivityFeed.module";
+
+@import "./media.module";

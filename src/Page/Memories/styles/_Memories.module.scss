@@ -1,0 +1,172 @@
+// MEMORIES
+.memories {
+  height: 95vh;
+  overflow: scroll;
+}
+
+// ADDMEMORIES
+
+.memoryForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 0 0;
+  width: 100%;
+  // max-width: 180px;
+}
+
+.memoryInpLab {
+  position: relative;
+  padding: 20px 0 0;
+  width: 100%;
+  max-width: 480px;
+}
+
+.input {
+  font-family: inherit;
+  width: 100%;
+  max-width: 480px;
+
+  border: none;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 17px;
+  color: #fff;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:focus {
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #116399, #38caef);
+    border-image-slice: 1;
+  }
+
+  &:placeholder-shown ~ .formLable {
+    font-size: 17px;
+    cursor: text;
+    top: 20px;
+  }
+
+  &:focus {
+    ~ .formLable {
+      position: absolute;
+      top: 0;
+      display: block;
+      transition: 0.2s;
+      font-size: 17px;
+      color: #38caef;
+      font-weight: 700;
+    }
+  }
+}
+
+.formLable {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 17px;
+  color: #9b9b9b;
+  pointer-events: none;
+}
+
+.fileInput {
+  display: none;
+}
+
+.fileLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 250px;
+  height: 55px;
+
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.previewImage {
+  width: 100%;
+  max-width: 450px;
+  height: 250px;
+
+  object-fit: cover;
+
+  border-radius: 18px;
+
+  margin-top: 20px;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.textareaBorder1 {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  padding: 2px;
+  width: 40%;
+  background: #2b2b2b;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    background: #171717;
+    border-radius: 16px;
+    z-index: 1;
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+  }
+}
+
+.textarea2 {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  min-height: 120px;
+
+  padding: 18px;
+
+  resize: none;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+  color: white;
+}
+
+

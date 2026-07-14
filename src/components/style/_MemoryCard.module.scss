@@ -1,0 +1,75 @@
+.memoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 30px;
+
+  margin-top: 40px;
+}
+
+.memoryCard {
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  backdrop-filter: blur(20px);
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+
+  transition: 0.35s;
+}
+
+.memoryImage {
+  width: 100%;
+  height: 260px;
+
+  object-fit: cover;
+}
+
+.memoryContent {
+  padding: 20px;
+}
+
+.memoryInfo {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 15px 0;
+
+  opacity: 0.75;
+}
+
+.memoryContent p {
+  margin-bottom: 20px;
+
+  line-height: 1.6;
+}
+
+
+.modal{
+    position: fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.9);
+
+    z-index:9999;
+
+    backdrop-filter:blur(10px);
+}
+
+.modalImage{
+
+    max-width:90vw;
+    max-height:90vh;
+
+    border-radius:20px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.5);
+
+    user-select:none;
+}

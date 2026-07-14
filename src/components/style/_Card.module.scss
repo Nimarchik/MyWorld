@@ -1,0 +1,55 @@
+.card{
+    background: transparent;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:20px;
+    border: 1px solid rgba($color: #fff, $alpha: 1.0);
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.cardHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.cardAuthor{
+    font-weight:600;
+    margin-left:8px;
+}
+
+.cardDate{
+    color:#999;
+    font-size:14px;
+}
+
+.cardText{
+    white-space:pre-wrap;
+    line-height:1.6;
+}
+
+.cardActions{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:15px;
+}
+
+.cardActions button{
+    border:none;
+    background:none;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.editArea{
+    width:100%;
+    min-height:120px;
+    border:none;
+    resize:none;
+    outline:none;
+    font-size:16px;
+    line-height:1.6;
+    background-color: transparent;
+}
