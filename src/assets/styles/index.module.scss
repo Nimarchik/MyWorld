@@ -113,6 +113,8 @@ ul {
   }
 }
 
+
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
@@ -125,6 +127,7 @@ input:-webkit-autofill:focus {
 @import "../../Page/Diary/styles/Diary.module";
 @import "../../Page/Statistic/styles/Statistic.module";
 @import "../../Page/Memories/styles/Memories.module";
+@import "../../Page/Oracle/style/Oracle.module";
 
 @import "../../components/style/Header.module";
 @import "../../components/style/Card.module";
@@ -136,5 +139,6 @@ input:-webkit-autofill:focus {
 @import "../../components/style/Feed.module";
 @import "../../components/style/MemoryCard.module";
 @import "../../components/style/ActivityFeed.module";
+@import "../../components/style/Comments.module";
 
 @import "./media.module";

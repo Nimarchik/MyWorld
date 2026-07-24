@@ -17,29 +17,46 @@ const Header = () => {
 
       if (!user) return;
 
-      const { data, error } = await supabase
+      // отмечаем пользователя онлайн
+      await supabase
         .from("profiles")
-        .select("id, name, online")
+        .update({
+          online: true,
+        })
+        .eq("id", user.id);
+
+      // читаем профиль
+      const { data } = await supabase
+        .from("profiles")
+        .select("name, online")
         .eq("id", user.id)
-
-        .single()
-
-
+        .single();
 
       if (data) {
         setUserName(data);
       }
-
     }
 
     loadProfile();
-
   }, []);
 
   async function logout() {
-    await supabase.auth.signOut().update({
-      online: false,
-    });
+    // Получаем текущего пользователя
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    // Если пользователь есть — обновляем его статус
+    if (user) {
+      await supabase
+        .from("profiles")
+        .update({ online: false })
+        .eq("id", user.id);
+    }
+
+    // Затем выходим из аккаунта
+    await supabase.auth.signOut();
+
     navigate("/");
   }
 
@@ -69,7 +86,7 @@ const Header = () => {
                 </NavLink>
               </li>
               <li className={style.navListItem} >
-                <NavLink to='Diary' className={style.navListItemLink} onClick={() => setMenuOpen(false)}>
+                <NavLink to='/Diary' className={style.navListItemLink} onClick={() => setMenuOpen(false)}>
                   Дневник
                 </NavLink>
               </li>
@@ -78,21 +95,26 @@ const Header = () => {
                   Воспоминания
                 </NavLink>
               </li>
-              <li className={style.navListItem} >
+              {/* <li className={style.navListItem} >
                 <NavLink to='Letters' className={style.navListItemLink} onClick={() => setMenuOpen(false)}>
                   Письма
                 </NavLink>
-              </li>
+              </li> */}
               <li className={style.navListItem} >
+                <NavLink to='/Oracle' className={style.navListItemLink} onClick={() => setMenuOpen(false)}>
+                  Предсказание
+                </NavLink>
+              </li>
+              {/* <li className={style.navListItem} >
                 <NavLink to='Calendar' className={style.navListItemLink} onClick={() => setMenuOpen(false)}>
                   Календарь
                 </NavLink>
-              </li>
-              <li className={style.navListItem} >
+              </li> */}
+              {/* <li className={style.navListItem} >
                 <NavLink to='Goals' className={style.navListItemLink} onClick={() => setMenuOpen(false)}>
                   Наши цели
                 </NavLink>
-              </li>
+              </li> */}
               <li className={style.itemMobile}>
                 <div className={style.userMobile}>
                   <span className={style.nickName}>

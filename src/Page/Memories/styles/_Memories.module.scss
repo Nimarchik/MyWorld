@@ -1,7 +1,44 @@
 // MEMORIES
 .memories {
+  position: relative;
   height: 95vh;
   overflow: scroll;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.momoeriesTitle {
+  margin: 50px 0 30px;
+}
+
+.memoriesBtn {
+  @include btn;
+}
+
+.memoriesAddFormActive {
+  position: absolute;
+  padding: 15px;
+  border-radius: 20px;
+  visibility: visible;
+  opacity: 1;
+  background-color: rgba($color: #000, $alpha: 0.9);
+
+  transition: all 0.4s;
+  z-index: 100;
+}
+
+.memoriesAddForm {
+  position: absolute;
+  border-radius: 20px;
+  padding: 15px;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.4s;
 }
 
 // ADDMEMORIES
@@ -134,7 +171,7 @@
   overflow: hidden;
   border-radius: 18px;
   padding: 2px;
-  width: 40%;
+  width: 100%;
   background: #2b2b2b;
 
   &::after {
@@ -155,7 +192,7 @@
   position: relative;
   z-index: 2;
 
-  width: 100%;
+  width: 200px;
   min-height: 120px;
 
   padding: 18px;
@@ -168,5 +205,3 @@
   background: transparent;
   color: white;
 }
-
-

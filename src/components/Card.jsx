@@ -2,6 +2,7 @@ import { useState } from "react";
 import { supabase } from "../lib/supabase";
 import style from "../assets/styles/index.module.css";
 import { motion } from "framer-motion";
+import Comments from "./Comments";
 
 const icons = {
   thought: "💭",
@@ -88,7 +89,7 @@ export default function Card({ post, currentUser, onUpdate }) {
         </p>
       )}
 
-      
+
 
       {isOwner && (
         <div className={style.cardActions}>
@@ -108,8 +109,14 @@ export default function Card({ post, currentUser, onUpdate }) {
               </button>
             </>
           )}
+
         </div>
+
       )}
+      <Comments
+        postId={post.id}
+        currentUser={currentUser}
+      />
     </motion.div>
   );
 }

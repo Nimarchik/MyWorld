@@ -68,6 +68,11 @@
   flex: 1;
   border-radius: 20px;
   padding: 15px;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .card {
@@ -137,7 +142,7 @@
   }
 
   &:focus-within {
-    box-shadow: 0 0 25px rgba(255,255,255,.15);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
   }
 }
 
@@ -168,46 +173,52 @@
   background: white;
 
   box-shadow:
-      0 0 8px white,
-      0 0 15px #ffd6e5;
+    0 0 8px white,
+    0 0 15px #ffd6e5;
 
   z-index: 0;
 
   animation: orbit 6s linear infinite;
 }
 
-.spark:nth-child(1){animation-delay:0s;}
-.spark:nth-child(2){animation-delay:1.5s;}
-.spark:nth-child(3){animation-delay:3s;}
-.spark:nth-child(4){animation-delay:4.5s;}
+.spark:nth-child(1) {
+  animation-delay: 0s;
+}
+.spark:nth-child(2) {
+  animation-delay: 1.5s;
+}
+.spark:nth-child(3) {
+  animation-delay: 3s;
+}
+.spark:nth-child(4) {
+  animation-delay: 4.5s;
+}
 
-@keyframes orbit{
-
-  0%{
-    left:-10px;
-    top:0;
+@keyframes orbit {
+  0% {
+    left: -10px;
+    top: 0;
   }
 
-  25%{
-    left:100%;
-    top:0;
+  25% {
+    left: 100%;
+    top: 0;
   }
 
-  50%{
-    left:100%;
-    top:100%;
+  50% {
+    left: 100%;
+    top: 100%;
   }
 
-  75%{
-    left:-10px;
-    top:100%;
+  75% {
+    left: -10px;
+    top: 100%;
   }
 
-  100%{
-    left:-10px;
-    top:0;
+  100% {
+    left: -10px;
+    top: 0;
   }
-
 }
 
 .saveBtn {

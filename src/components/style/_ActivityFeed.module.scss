@@ -10,6 +10,11 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  scrollbar-width: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .activityTitle {

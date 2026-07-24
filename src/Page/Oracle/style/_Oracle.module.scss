@@ -1,0 +1,331 @@
+.oracle {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  overflow: visible;
+
+  position: relative;
+
+  // background: radial-gradient(circle at top, #31235b, #090912);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  color: white;
+
+  font-size: 52px;
+
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #b9b9d4;
+
+  margin-bottom: 50px;
+
+  text-align: center;
+
+  max-width: 450px;
+}
+
+.ball {
+  width: 150px;
+
+  height: 150px;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  font-size: 120px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+
+
+  transition: 0.4s;
+}
+
+.ball:hover {
+  transform: scale(1.05);
+
+}
+
+.active {
+  animation: pulse 0.8s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.button {
+  margin-top: 40px;
+
+  padding: 15px 35px;
+
+  border: none;
+
+  border-radius: 50px;
+
+  cursor: pointer;
+}
+
+.loading {
+  margin-top: 40px;
+
+  color: white;
+
+  font-size: 22px;
+
+  animation: blink 1s infinite;
+}
+
+.oracleBLocks {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.oracleBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardOracle {
+  width: 100%;
+  margin-top: 60px;
+  padding: 35px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.07);
+
+  opacity: 1;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.35),
+    0 0 40px rgba(123, 92, 255, 0.25);
+
+  animation: fadeUp 0.5s ease;
+}
+
+.card h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 25px;
+
+  font-size: 38px;
+  color: white;
+}
+
+.tabs {
+  display: flex;
+
+  gap: 20px;
+
+  margin: 40px 0;
+}
+
+.tabs button {
+  border: none;
+
+  padding: 14px 30px;
+
+  border-radius: 40px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.tabs button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.activeTab {
+  background: #7856ff !important;
+
+  box-shadow: 0 0 25px #7856ff;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+// STARS
+
+.stars {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: visible;
+}
+
+.star {
+  position: absolute;
+
+  border-radius: 50%;
+
+  background: white;
+
+  animation: twinkle 4s infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.6);
+  }
+}
+
+.oracleGroup {
+  display: flex;
+  gap: 40px;
+}
+
+// CRYSTALS
+
+.ball {
+  position: relative;
+
+  width: 280px;
+
+  height: 280px;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  overflow: visible;
+
+  background: radial-gradient(
+    circle at 35% 30%,
+    rgba(255, 255, 255, 0.6),
+    rgba(126, 91, 255, 0.25),
+    rgba(20, 20, 40, 0.95)
+  );
+
+  box-shadow: 0 0 80px rgba(145, 99, 255, 0.8);
+
+  transition: 0.4s;
+}
+
+.ball:hover {
+  transform: scale(1.05);
+}
+
+.glow {
+  position: absolute;
+
+  inset: -20px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(circle, rgba(151, 109, 255, 0.7), transparent 70%);
+
+  filter: blur(30px);
+
+  animation: pulse 4s infinite;
+}
+
+.inner {
+  position: absolute;
+
+  width: 180px;
+
+  height: 180px;
+
+  border-radius: 50%;
+
+  top: 50%;
+
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent);
+
+  filter: blur(20px);
+}
+
+.predict {
+  width: 500px;
+}
+
+.reflect {
+  position: absolute;
+
+  width: 70px;
+
+  height: 140px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.45);
+
+  top: 20px;
+
+  left: 45px;
+
+  filter: blur(10px);
+
+  transform: rotate(-30deg);
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.2);
+
+    opacity: 0.4;
+  }
+}

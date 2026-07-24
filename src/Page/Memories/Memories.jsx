@@ -8,6 +8,7 @@ import style from "../../assets/styles/index.module.css";
 export default function Memories() {
   const [user, setUser] = useState(null);
   const [memories, setMemories] = useState([]);
+  const [show, setShow] = useState(false)
 
   useEffect(() => {
     loadUser();
@@ -68,14 +69,20 @@ export default function Memories() {
   return (
     <div className={style.container}>
       <div className={style.memories}>
-        <h1>📸 Воспоминания</h1>
+        <h1 className={style.momoeriesTitle}>📸 Воспоминания</h1>
+        <button className={style.memoriesBtn} onClick={() => setShow(!show)}>
+          <span className={style.spn2}> Добавить</span>
+        </button>
 
-        {user && (
-          <AddMemory
-            user={user}
-            onSaved={loadMemories}
-          />
-        )}
+        <div className={show ? style.memoriesAddFormActive : style.memoriesAddForm}>
+
+          {user && (
+            <AddMemory
+              user={user}
+              onSaved={loadMemories}
+            />
+          )}
+        </div>
 
         <div className={style.memoriesGrid}>
           {memories.map(memory => (

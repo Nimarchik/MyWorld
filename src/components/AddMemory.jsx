@@ -2,7 +2,7 @@ import { useState } from "react";
 import { supabase } from "../lib/supabase";
 import style from "../assets/styles/index.module.css";
 
-export default function AddMemory({ user, onSaved }) {
+export default function AddMemory({ user, onSaved, show }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [place, setPlace] = useState("");
@@ -71,6 +71,12 @@ export default function AddMemory({ user, onSaved }) {
     if (onSaved) {
       onSaved();
     }
+  }
+
+
+  const click = () => {
+    saveMemory()
+    !show
   }
 
   return (
@@ -156,7 +162,7 @@ export default function AddMemory({ user, onSaved }) {
       </div>
       <button
         className={style.saveBtn}
-        onClick={saveMemory}
+        onClick={click}
         disabled={loading}
       >
         <span className={style.spn2}>

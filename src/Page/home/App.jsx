@@ -1,42 +1,45 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabase.js";
 import Login from "../Login/Login.jsx";
-import Diary from "../Diary/Diary.jsx";
 import Home from "../Main/Home.jsx";
-import Statistic from "../Statistic/Statistic.jsx";
-
-
 
 function App() {
-
   const [session, setSession] = useState(null);
-
-
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      setSession(data.session);
-    });
+    async function getSession() {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      setSession(session);
+      setLoading(false);
+    }
+
+    getSession();
 
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
+      setLoading(false);
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
-
+  if (loading) {
+    return <div>Загрузка...</div>;
+  }
 
   if (!session) {
-    return <>
-      <Login />
-    </>
+    return <Login />;
   }
 
   return <Home />;
 }
 
-
-export default App
+export default App;

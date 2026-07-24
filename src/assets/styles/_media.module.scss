@@ -1,6 +1,8 @@
-.burger {
+.burger,
+.userMobile {
   display: none;
 }
+
 @media (max-width: 600px) {
   html,
   body {
@@ -245,6 +247,38 @@
     padding: 12px 0;
     font-size: 0.95rem;
   }
+
+  .oracleGroup {
+    flex-direction: column;
+  }
+
+  .cardOracle {
+    width: 300px;
+  }
+  .predict {
+    width: 100%;
+  }
+  .oracleBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 320px;
+    margin: 0 auto;
+  }
+  .ball {
+    width: 130px;
+    height: 130px;
+    font-size: 80px;
+  }
+  .title {
+    font-size: 27px;
+  }
+
+  .stickerGrid {
+    width: 280px;
+    left: -65%;
+    padding: 10px;
+  }
 }
 
 @media (max-width: 430px) {
@@ -358,5 +392,26 @@
 
   .column h2 {
     font-size: 16px;
+  }
+
+  .oracleGroup {
+    flex-direction: column;
+  }
+
+  .cardOracle {
+    width: 250px;
+    font-size: 16px;
+    padding: 20px;
+  }
+  .predict {
+    width: 100%;
+    font-size: 13px;
+  }
+  .oracleBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin: 0 auto;
   }
 }

@@ -1,0 +1,168 @@
+.comments {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.commentsTitle {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.commentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.noComments {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+}
+
+.comment {
+  position: relative;
+  padding: 12px 15px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.commentHeader {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.commentHeader strong {
+  font-size: 14px;
+}
+
+.commentText {
+  margin: 5px 0;
+  font-size: 15px;
+  word-break: break-word;
+}
+
+.commentDate {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.deleteComment {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  font-size: 27px;
+}
+
+.deleteComment:hover {
+  color: #ff6b81;
+}
+
+.commentForm {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.commentForm input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.commentForm input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.commentForm button {
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+
+  transition: 0.2s;
+}
+
+.commentForm button:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.commentForm button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.stickers {
+  width: 20px;
+  height: 20px;
+}
+
+.commentSticker {
+  display: block;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* Если есть текст — стикер маленький */
+.stickerWithText {
+  width: 20px;
+  height: 20px;
+}
+
+/* Если только стикер — большой */
+.stickerOnly {
+  width: 180px;
+  height: 180px;
+}
+
+.commentsContent {
+  display: flex;
+  align-items: center;
+}
+
+.stickerPicker {
+  position: relative;
+}
+
+.stickerGrid {
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  padding: 15px;
+  background-color: rgba($color: #000000, $alpha: .9);
+  border-radius: 20px;
+  overflow: auto;
+  z-index: 20;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.pushBtn {
+  @include btn;
+  top: 30px;
+  left: 30px;
+}

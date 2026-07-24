@@ -11,6 +11,8 @@ import ActivityFeed from "../../components/ActivityFeed";
 const Statistic = () => {
   const [user, setUser] = useState(null);
 
+
+
   useEffect(() => {
     async function loadUser() {
       const {
@@ -22,6 +24,8 @@ const Statistic = () => {
 
     loadUser();
   }, []);
+
+
 
   return (
     <div className={style.container}>
@@ -36,6 +40,7 @@ const Statistic = () => {
           {user && (
             <ActivityFeed user={user} />
           )}
+
         </div>
       </div>
     </div>
