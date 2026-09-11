@@ -12,6 +12,8 @@ import Memories from "./Page/Memories/Memories.jsx";
 import Oracle from "./Page/Oracle/Oracle.jsx";
 import { createHashRouter } from "react-router";
 import "./registerSW";
+import Movies from "./Page/Movies/Movies.jsx";
+import { AchievementProvider } from "./context/AchievementContext.jsx";
 
 
 const router = createHashRouter(
@@ -47,6 +49,10 @@ const router = createHashRouter(
           path: "/Oracle",
           element: <Oracle />,
         },
+        {
+          path: "/Movies",
+          element: <Movies />,
+        },
       ],
     },
   ]
@@ -54,6 +60,8 @@ const router = createHashRouter(
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AchievementProvider>
+      <RouterProvider router={router} />
+    </AchievementProvider>
   </StrictMode>
 );

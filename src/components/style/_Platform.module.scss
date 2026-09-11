@@ -1,0 +1,280 @@
+/* =========================================
+   PLATFORM 9¾
+========================================= */
+
+.platformOverlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 999999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(90, 55, 30, 0.18) 0%,
+    rgba(10, 8, 7, 0.88) 55%,
+    rgba(0, 0, 0, 0.98) 100%
+  );
+
+  backdrop-filter: blur(4px);
+
+  animation: platformFadeIn 1.2s ease forwards;
+}
+
+/* =========================================
+   SCENE
+========================================= */
+
+.platformScene {
+  position: relative;
+
+  width: min(900px, 90vw);
+  height: 500px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  animation: platformSceneAppear 1.5s ease forwards;
+}
+
+/* =========================================
+   PLATFORM NUMBER
+========================================= */
+
+.platformNumber {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 260px;
+  height: 260px;
+
+  border-radius: 50%;
+
+  color: #d7c39a;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 100px;
+
+  font-weight: bold;
+
+  letter-spacing: -8px;
+
+  border: 8px solid #725b3d;
+
+  background: radial-gradient(circle, #40372d 0%, #211d19 65%, #0b0a09 100%);
+
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.9),
+    inset 0 0 70px rgba(0, 0, 0, 0.7),
+    0 0 25px rgba(180, 140, 80, 0.25),
+    0 0 70px rgba(100, 70, 30, 0.2);
+
+  animation:
+    platformNumberAppear 1.5s ease,
+    platformNumberFloat 4s ease-in-out 1.5s infinite;
+}
+
+/* немного старого камня */
+
+.platformNumber::before {
+  content: "";
+
+  position: absolute;
+  inset: 12px;
+
+  border-radius: 50%;
+
+  border: 2px solid rgba(210, 190, 145, 0.2);
+
+  pointer-events: none;
+}
+
+/* =========================================
+   TEXT
+========================================= */
+
+.platformText {
+  position: absolute;
+
+  bottom: 20px;
+
+  width: 100%;
+
+  text-align: center;
+
+  color: #d8c8a5;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  text-shadow:
+    0 0 10px #000,
+    0 0 25px #000,
+    0 0 45px rgba(0, 0, 0, 0.9);
+
+  opacity: 0;
+
+  animation: platformTextAppear 1.5s ease 1s forwards;
+}
+
+.platformText p {
+  margin: 0 0 12px;
+
+  font-size: 36px;
+
+  letter-spacing: 4px;
+}
+
+.platformText span {
+  display: block;
+
+  font-size: 18px;
+
+  color: rgba(216, 200, 165, 0.65);
+
+  font-style: italic;
+
+  letter-spacing: 2px;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes platformFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes platformSceneAppear {
+  from {
+    opacity: 0;
+
+    transform: translateY(80px) scale(0.85);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes platformNumberAppear {
+  from {
+    opacity: 0;
+
+    transform: scale(0.3) rotate(-20deg);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes platformNumberFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes platformTextAppear {
+  from {
+    opacity: 0;
+
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .platformScene {
+    width: 90vw;
+    height: 450px;
+  }
+
+  .platformNumber {
+    width: 190px;
+    height: 190px;
+
+    font-size: 72px;
+
+    border-width: 6px;
+  }
+
+  .platformText p {
+    font-size: 27px;
+  }
+
+  .platformText span {
+    font-size: 15px;
+  }
+}
+
+.hiddenPlatform {
+  position: absolute;
+  top: 50px;
+  right: 50%;
+  bottom: 8px;
+
+  width: 28px;
+  height: 28px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.025);
+
+  font-family: Georgia, serif;
+  font-size: 16px;
+
+  cursor: default;
+
+  transition: color 0.3s ease;
+}
+
+.hiddenPlatform:hover {
+  color: rgba(255, 255, 255, 0.226);
+
+  cursor: pointer;
+}

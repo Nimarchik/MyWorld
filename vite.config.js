@@ -11,6 +11,12 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
 
+      strategies: "injectManifest",
+
+      srcDir: "src",
+
+      filename: "sw.js",
+
       manifest: {
         name: "Nimarchik & Monorochka",
         short_name: "N&M",

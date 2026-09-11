@@ -3,12 +3,25 @@ import { supabase } from "../../lib/supabase";
 import AddMemory from "../../components/AddMemory";
 import MemoryCard from "../../components/MemoryCard";
 import style from "../../assets/styles/index.module.css";
+import Platform934 from "../../components/Platform934";
+import {
+  hasUnlockedEgg,
+  unlockEgg,
+} from "../../lib/easterEggs";
+
+import { useAchievement } from "../../context/AchievementContext";
+import HobbitEgg from "../../components/HobbitEgg";
 
 
 export default function Memories() {
   const [user, setUser] = useState(null);
   const [memories, setMemories] = useState([]);
   const [show, setShow] = useState(false)
+  const [shows, setShows] = useState(false);
+  const { unlock } = useAchievement();
+  const [showPlatform, setShowPlatform] =
+    useState(false);
+  const [showHobbit, setShowHobbit] = useState(false);
 
   useEffect(() => {
     loadUser();
@@ -66,10 +79,56 @@ export default function Memories() {
 
   console.log(memories);
 
-  return (
+  return (<>
+
+
+    {showPlatform && (
+      <Platform934
+        onComplete={async () => {
+          setShowPlatform(false);
+
+          const egg = await unlockEgg("platform934");
+
+          if (egg) {
+            unlock(egg);
+          }
+        }}
+      />
+    )}
+
+
+    {showHobbit && (
+      <HobbitEgg
+        onComplete={async () => {
+          setShowHobbit(false);
+
+          const egg = await unlockEgg("hobbit");
+
+          if (egg) {
+            unlock(egg);
+          }
+        }}
+      />
+    )}
     <div className={style.container}>
       <div className={style.memories}>
         <h1 className={style.momoeriesTitle}>📸 Воспоминания</h1>
+        <button
+          className={style.hiddenPlatform}
+          onClick={async () => {
+            const alreadyUnlocked =
+              await hasUnlockedEgg("platform934");
+
+            if (alreadyUnlocked) {
+              return;
+            }
+
+            setShowPlatform(true);
+          }}
+          aria-label="9¾"
+        >
+          9¾
+        </button>
         <button className={style.memoriesBtn} onClick={() => setShow(!show)}>
           <span className={style.spn2}> Добавить</span>
         </button>
@@ -85,14 +144,24 @@ export default function Memories() {
         </div>
 
         <div className={style.memoriesGrid}>
-          {memories.map(memory => (
+          {memories.map((memory) => (
             <MemoryCard
               key={memory.id}
               memory={memory}
+              onSecretHold={async () => {
+                const alreadyUnlocked =
+                  await hasUnlockedEgg("hobbit");
+
+                if (alreadyUnlocked) {
+                  return;
+                }
+
+                setShowHobbit(true);
+              }}
             />
           ))}
         </div>
       </div>
     </div>
-  );
+  </>);
 }

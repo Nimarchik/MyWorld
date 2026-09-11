@@ -1,4 +1,5 @@
 import webpush from "npm:web-push";
+import { createClient } from "npm:@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -33,6 +34,14 @@ Deno.serve(async (req) => {
     const subject =
       Deno.env.get("VAPID_SUBJECT");
 
+    const supabaseUrl =
+      Deno.env.get("SUPABASE_URL");
+
+    const serviceRoleKey =
+      Deno.env.get(
+        "SUPABASE_SERVICE_ROLE_KEY"
+      );
+
     if (
       !publicKey ||
       !privateKey ||
@@ -40,6 +49,15 @@ Deno.serve(async (req) => {
     ) {
       throw new Error(
         "VAPID keys are not configured"
+      );
+    }
+
+    if (
+      !supabaseUrl ||
+      !serviceRoleKey
+    ) {
+      throw new Error(
+        "Supabase environment variables are missing"
       );
     }
 
@@ -51,6 +69,15 @@ Deno.serve(async (req) => {
       subject,
       publicKey,
       privateKey
+    );
+
+    // ==========================================
+    // SUPABASE CLIENT
+    // ==========================================
+
+    const supabase = createClient(
+      supabaseUrl,
+      serviceRoleKey
     );
 
     // ==========================================
@@ -71,59 +98,50 @@ Deno.serve(async (req) => {
     }
 
     // ==========================================
-    // SUPABASE
-    // ==========================================
-
-    const supabaseUrl =
-      Deno.env.get(
-        "SUPABASE_URL"
-      );
-
-    const serviceRoleKey =
-      Deno.env.get(
-        "SUPABASE_SERVICE_ROLE_KEY"
-      );
-
-    if (
-      !supabaseUrl ||
-      !serviceRoleKey
-    ) {
-      throw new Error(
-        "Supabase environment variables are missing"
-      );
-    }
-
-    // ==========================================
     // ПОЛУЧАЕМ ПОДПИСКИ ПОЛЬЗОВАТЕЛЯ
     // ==========================================
 
-    const response =
-      await fetch(
-        `${supabaseUrl}/rest/v1/push_subscriptions?user_id=eq.${user_id}&select=*`,
-        {
-          headers: {
-            apikey:
-              serviceRoleKey,
+    const {
+      data: subscriptions,
+      error: subscriptionsError,
+    } = await supabase
+      .from("push_subscriptions")
+      .select("*")
+      .eq("user_id", user_id);
 
-            Authorization:
-              `Bearer ${serviceRoleKey}`,
-          },
-        }
-      );
-
-    if (!response.ok) {
-      throw new Error(
-        `Failed to load subscriptions: ${response.status}`
-      );
+    if (subscriptionsError) {
+      throw subscriptionsError;
     }
-
-    const subscriptions =
-      await response.json();
 
     console.log(
       "Subscriptions:",
-      subscriptions.length
+      subscriptions?.length || 0
     );
+
+    // ==========================================
+    // ЕСЛИ ПОДПИСОК НЕТ
+    // ==========================================
+
+    if (
+      !subscriptions ||
+      subscriptions.length === 0
+    ) {
+      return new Response(
+        JSON.stringify({
+          success: true,
+          message:
+            "No push subscriptions found",
+          sent: [],
+        }),
+        {
+          headers: {
+            ...corsHeaders,
+            "Content-Type":
+              "application/json",
+          },
+        }
+      );
+    }
 
     // ==========================================
     // ОТПРАВЛЯЕМ PUSH
@@ -167,6 +185,11 @@ Deno.serve(async (req) => {
             })
           );
 
+        console.log(
+          "Push sent successfully:",
+          subscription.endpoint
+        );
+
         results.push({
           success: true,
           endpoint:
@@ -181,10 +204,63 @@ Deno.serve(async (req) => {
           error
         );
 
+        // ==========================================
+        // ОПРЕДЕЛЯЕМ HTTP STATUS
+        // ==========================================
+
+        const statusCode =
+          error?.statusCode ||
+          error?.status ||
+          null;
+
+        // ==========================================
+        // УДАЛЯЕМ НЕРАБОЧУЮ ПОДПИСКУ
+        // ==========================================
+
+        // 404 — подписка больше не существует
+        // 410 — подписка окончательно истекла
+
+        if (
+          statusCode === 404 ||
+          statusCode === 410
+        ) {
+          console.log(
+            "Removing invalid subscription:",
+            subscription.endpoint
+          );
+
+          const {
+            error: deleteError,
+          } = await supabase
+            .from(
+              "push_subscriptions"
+            )
+            .delete()
+            .eq(
+              "endpoint",
+              subscription.endpoint
+            );
+
+          if (deleteError) {
+            console.error(
+              "Failed to delete invalid subscription:",
+              deleteError
+            );
+          } else {
+            console.log(
+              "Invalid subscription deleted"
+            );
+          }
+        }
+
         results.push({
           success: false,
+
           endpoint:
             subscription.endpoint,
+
+          statusCode,
+
           error:
             error instanceof Error
               ? error.message
@@ -200,11 +276,13 @@ Deno.serve(async (req) => {
     return new Response(
       JSON.stringify({
         success: true,
+
         sent: results,
       }),
       {
         headers: {
           ...corsHeaders,
+
           "Content-Type":
             "application/json",
         },
@@ -231,6 +309,7 @@ Deno.serve(async (req) => {
 
         headers: {
           ...corsHeaders,
+
           "Content-Type":
             "application/json",
         },

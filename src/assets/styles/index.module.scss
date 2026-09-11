@@ -1,8 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Hachi+Maru+Pop&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap");
 
 $fontHachi: "Hachi Maru Pop", cursive;
 $fontConfort: "Comfortaa", sans-serif;
 $white: #fff;
+$hogw: "EB Garamond", serif;
+$inscrypt: "Cormorant Garamond", serif;
+
 html,
 body,
 * {
@@ -113,8 +117,6 @@ ul {
   }
 }
 
-
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
@@ -140,5 +142,10 @@ input:-webkit-autofill:focus {
 @import "../../components/style/MemoryCard.module";
 @import "../../components/style/ActivityFeed.module";
 @import "../../components/style/Comments.module";
+@import "../../components/style/Matrix.module";
+@import "../../components/style/Watcher.module";
+@import "../../components/style/Ring.module";
+@import '../../components/style/Platform.module';
+@import '../../components/style/Hobbit.module';
 
 @import "./media.module";

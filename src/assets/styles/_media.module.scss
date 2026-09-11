@@ -141,6 +141,7 @@
   }
 
   .diaryTitle {
+    margin-top: 45px;
     font-size: 24px;
     line-height: 1.3;
     text-align: center;
@@ -309,6 +310,14 @@
 }
 
 @media (max-width: 360px) {
+  .header {
+    width: 100%;
+  }
+
+  .container {
+    width: 330px;
+  }
+
   .logo {
     font-size: 15px;
   }
@@ -338,6 +347,26 @@
 
   .column h2 {
     font-size: 18px;
+  }
+  .stats {
+    margin: 0;
+  }
+  .statContenr {
+    width: 340px;
+  }
+  .statsGrid {
+    width: 340px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .statsGrid div {
+    padding: 15px;
+  }
+  .activityFeed {
+    width: 330px;
+    padding: 0;
+  }
+  .memoryCard {
+    width: 330px;
   }
 }
 

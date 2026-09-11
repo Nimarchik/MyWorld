@@ -105,6 +105,7 @@ const Header = () => {
                   Предсказание
                 </NavLink>
               </li>
+             
               {/* <li className={style.navListItem} >
                 <NavLink to='Calendar' className={style.navListItemLink} onClick={() => setMenuOpen(false)}>
                   Календарь

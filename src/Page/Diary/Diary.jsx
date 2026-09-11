@@ -3,13 +3,18 @@ import { supabase } from "../../lib/supabase";
 import Editor from "../../components/Editor";
 import style from '../../assets/styles/index.module.css'
 import Card from "../../components/Card";
+import RingEgg from "../../components/RingEgg";
 import { AnimatePresence } from "framer-motion";
+import { hasUnlockedEgg, unlockEgg } from "../../lib/easterEggs";
+import { useAchievement } from "../../context/AchievementContext";
 
 
 export default function Diary() {
   const [user, setUser] = useState(null);
   const [myName, setMyName] = useState("");
   const [partnerName, setPartnerName] = useState("");
+  const { unlock } = useAchievement();
+  const [showRing, setShowRing] = useState(false);
 
   useEffect(() => {
     async function load() {
@@ -117,7 +122,45 @@ export default function Diary() {
 
 
 
+
+
+
+  async function handleSaved(post) {
+    await loadPosts();
+
+    if (!post?.content) return;
+
+    const text = post.content
+      .trim()
+      .toLowerCase();
+
+    const alreadyUnlocked =
+      await hasUnlockedEgg("lotr_ring");
+
+    if (alreadyUnlocked) return;
+
+    if (text === "mellon") {
+      const egg = await unlockEgg("lotr_ring");
+
+      if (egg) {
+        unlock(egg);
+        setShowRing(true);
+      }
+    }
+  }
+
+
+
   return (<>
+
+    {showRing && (
+      <RingEgg
+        onComplete={() => {
+          setShowRing(false);
+        }}
+      />
+    )}
+    
     <div className={style.container}>
       <div className={style.diaryTop}>
         <h1 className={style.diaryTitle}>
@@ -133,7 +176,7 @@ export default function Diary() {
 
           <Editor
             user={user}
-            onSaved={loadPosts}
+            onSaved={handleSaved}
           />
           <AnimatePresence>
             {myProfile.map(post => (

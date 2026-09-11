@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Hachi+Maru+Pop&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap");
 html,
 body,
 * {
@@ -1590,6 +1591,1184 @@ body {
   left: 30px;
 }
 
+.matrixOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: matrixFade 0.4s ease;
+}
+
+.matrixWindow {
+  width: min(700px, 90%);
+  background: #050505;
+  border: 1px solid #00ff88;
+  border-radius: 14px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.25), 0 0 60px rgba(0, 255, 136, 0.15);
+}
+
+.matrixWindow pre {
+  margin: 0;
+  white-space: pre-wrap;
+  color: #00ff88;
+  font-family: Consolas, monospace;
+  font-size: 20px;
+  line-height: 1.8;
+  text-shadow: 0 0 10px #00ff88;
+}
+
+.matrixWindow button {
+  margin-top: 30px;
+  background: #00ff88;
+  color: #111;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.matrixWindow button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ff88;
+}
+
+@keyframes matrixFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.toast {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  width: 340px;
+  background: rgba(15, 15, 20, 0.92);
+  border: 1px solid rgba(0, 255, 170, 0.25);
+  backdrop-filter: blur(18px);
+  border-radius: 18px;
+  display: flex;
+  gap: 18px;
+  padding: 18px;
+  color: white;
+  z-index: 9999999;
+  animation: show 0.45s ease;
+}
+
+.icon {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: #00ff88;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  flex-shrink: 0;
+  box-shadow: 0 0 25px #00ff88;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.small {
+  color: #00ff88;
+  font-size: 13px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.content h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.content p {
+  margin-top: 8px;
+  color: #bdbdbd;
+  line-height: 1.4;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translateX(150px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+.hogBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 600px;
+  max-width: 90%;
+  height: 600px;
+}
+
+.hogImg {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  inset: 0;
+  cursor: pointer;
+}
+
+.letterss {
+  cursor: pointer;
+}
+
+.hogBoxContent {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  z-index: 9999;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(5px);
+}
+
+.seal {
+  font-size: 60px;
+  font-family: "EB Garamond", serif;
+  margin-bottom: 30px;
+  animation: float 2s ease-in-out infinite;
+}
+
+.button {
+  margin-top: 25px;
+  background: #7b1113;
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 17px;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: #9d1d20;
+  transform: scale(1.05);
+}
+
+h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.hogTitle {
+  margin-top: 8px;
+  color: #8d5a12;
+}
+
+.hogSub {
+  margin-top: 18px;
+  color: #66410c;
+  line-height: 1.8;
+}
+
+@keyframes appear {
+  from {
+    transform: translateY(40px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.owl {
+  position: fixed;
+  top: 50px;
+  left: 40px;
+  font-size: 32px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  z-index: 99999;
+  animation: flyIn 0.8s ease, float 2s ease-in-out infinite;
+}
+
+.owl:hover {
+  transform: scale(1.15);
+}
+
+@keyframes flyIn {
+  from {
+    transform: translateX(180px) translateY(-80px) rotate(30deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) translateY(0) rotate(0);
+    opacity: 1;
+  }
+}
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+/* ===========================
+   OVERLAY
+=========================== */
+.inscryptionOverlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: radial-gradient(circle at center, rgba(30, 20, 10, 0.2), rgba(0, 0, 0, 0.95));
+  backdrop-filter: blur(5px);
+  font-family: "Cormorant Garamond", serif;
+  z-index: 999999;
+}
+
+/* ===========================
+   EYES
+=========================== */
+.leshyEyes {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 140px;
+  animation: eyesFloat 3s ease-in-out infinite;
+}
+
+.leshyEyes span {
+  width: 22px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffe66b;
+  box-shadow: 0 0 10px #ffe66b, 0 0 25px #ffd900, 0 0 45px #ffbf00;
+  animation: blink 6s infinite;
+}
+
+/* ===========================
+   TEXT
+=========================== */
+.leshyText {
+  position: absolute;
+  top: 150px;
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+  color: #efe1b2;
+  font-size: 34px;
+  line-height: 1.5;
+  font-family: Georgia, serif;
+  text-shadow: 0 0 10px #000, 0 0 25px #000;
+  animation: fadeIn 0.4s;
+}
+
+/* ================= CARD ================= */
+.inscryptionCard {
+  position: relative;
+  width: 330px;
+  height: 580px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+  animation: cardFade 0.8s;
+  cursor: pointer;
+}
+
+.flip {
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 18px;
+  border: 5px solid #4d2f17;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45), inset 0 0 15px rgba(0, 0, 0, 0.25);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.back {
+  transform: rotateY(180deg);
+  background-color: #4d2f17;
+}
+
+/* ================= IMAGE ================= */
+.cardImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+
+/* ================= BUTTON ================= */
+.front button,
+.back button {
+  width: calc(100% - 30px);
+  margin-top: auto;
+  margin-bottom: 15px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #5b3820;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.front button:hover,
+.back button:hover {
+  background: #734626;
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(220px) scale(0.75);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes floatCard {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes blink {
+  0%, 45%, 47%, 100% {
+    transform: scaleY(1);
+  }
+  46% {
+    transform: scaleY(0.05);
+  }
+}
+@keyframes eyesFloat {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(5px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+@keyframes cardFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* =========================
+   WATCHER
+========================= */
+.watcher {
+  position: fixed;
+  inset: 0;
+  z-index: 999998;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  animation: watcherFadeIn 1.5s ease forwards;
+}
+
+/* лёгкое затемнение вокруг него */
+.watcher::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.15) 35%, rgba(0, 0, 0, 0.75) 100%);
+  pointer-events: none;
+}
+
+/* =========================
+   FIGURE
+========================= */
+.watcherFigure {
+  position: relative;
+  width: 150px;
+  height: 300px;
+  opacity: 0;
+  animation: watcherAppear 2s ease forwards, watcherFloat 4s ease-in-out 2s infinite;
+}
+
+/* голова */
+.watcherHead {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 115px;
+  height: 125px;
+  transform: translateX(-50%);
+  border-radius: 50% 50% 45% 45%;
+  background: #050505;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.9), 0 0 80px rgba(0, 0, 0, 0.7);
+}
+
+/* тело */
+.watcherBody {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 150px;
+  height: 210px;
+  transform: translateX(-50%);
+  background: #050505;
+  border-radius: 50% 50% 15% 15%;
+  clip-path: polygon(30% 0%, 70% 0%, 90% 35%, 100% 100%, 0% 100%, 10% 35%);
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.9);
+}
+
+/* =========================
+   EYES
+========================= */
+.watcherEyes {
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 30px;
+}
+
+.watcherEyes span {
+  display: block;
+  width: 15px;
+  height: 8px;
+  border-radius: 50%;
+  background: #eee;
+  box-shadow: 0 0 6px #fff, 0 0 15px rgba(255, 255, 255, 0.8);
+  animation: watcherBlink 6s infinite;
+}
+
+/* =========================
+   TEXT
+========================= */
+.watcherText {
+  position: absolute;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.65);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 28px;
+  letter-spacing: 8px;
+  text-shadow: 0 0 10px #000, 0 0 25px #000;
+  opacity: 0;
+  animation: watcherTextAppear 2s ease 1.5s forwards;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes watcherFadeIn {
+  from {
+    background: rgba(0, 0, 0, 0);
+  }
+  to {
+    background: rgba(0, 0, 0, 0.35);
+  }
+}
+@keyframes watcherAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes watcherFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes watcherTextAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes watcherBlink {
+  0%, 45%, 47%, 100% {
+    transform: scaleY(1);
+  }
+  46% {
+    transform: scaleY(0.1);
+  }
+}
+/* =========================================
+   ONE RING EASTER EGG
+========================================= */
+.ringOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  background: radial-gradient(circle at center, rgba(85, 55, 15, 0.18), rgba(0, 0, 0, 0.96) 75%);
+  backdrop-filter: blur(4px);
+  animation: ringOverlayAppear 1.5s ease forwards;
+}
+
+/* =========================================
+   SCENE
+========================================= */
+.ringScene {
+  position: relative;
+  width: 420px;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: ringSceneAppear 2s ease forwards;
+}
+
+/* =========================================
+   GLOW
+========================================= */
+.ringGlow {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  width: 260px;
+  height: 260px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 190, 55, 0.25) 0%, rgba(255, 170, 20, 0.12) 30%, transparent 70%);
+  filter: blur(10px);
+  animation: ringGlowPulse 2.5s ease-in-out infinite;
+}
+
+/* =========================================
+   RING
+========================================= */
+.ring {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  border: 22px solid #9a681d;
+  background: transparent;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 0 0 10px rgba(255, 190, 60, 0.7), 0 0 30px rgba(255, 170, 30, 0.5), 0 0 70px rgba(255, 150, 10, 0.25);
+  animation: ringFloat 3s ease-in-out infinite, ringAppear 1.8s cubic-bezier(0.17, 0.67, 0.35, 1.3);
+}
+
+/* внутренняя тень */
+.ringInner {
+  position: absolute;
+  inset: -22px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 220, 120, 0.8);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+}
+
+/* =========================================
+   TEXT
+========================================= */
+.ringText {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  text-align: center;
+  color: #d9bd75;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  text-shadow: 0 0 8px #000, 0 0 20px #000, 0 0 35px rgba(0, 0, 0, 0.9);
+  animation: ringTextAppear 2s ease 1s forwards;
+  opacity: 0;
+}
+
+.ringText p {
+  margin: 0 0 12px;
+  font-size: 34px;
+  letter-spacing: 2px;
+}
+
+.ringText span {
+  display: block;
+  font-size: 17px;
+  font-style: italic;
+  letter-spacing: 3px;
+  color: rgba(217, 189, 117, 0.65);
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+@keyframes ringOverlayAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes ringSceneAppear {
+  from {
+    opacity: 0;
+    transform: translateY(100px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes ringAppear {
+  from {
+    transform: scale(0.2) rotate(-180deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+@keyframes ringFloat {
+  0% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+}
+@keyframes ringGlowPulse {
+  0% {
+    opacity: 0.45;
+    transform: translateX(-50%) scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.15);
+  }
+  100% {
+    opacity: 0.45;
+    transform: translateX(-50%) scale(0.9);
+  }
+}
+@keyframes ringTextAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* =========================================
+   MOBILE
+========================================= */
+@media (max-width: 600px) {
+  .ringScene {
+    width: 90vw;
+    height: 500px;
+  }
+  .ring {
+    width: 145px;
+    height: 145px;
+    border-width: 17px;
+  }
+  .ringInner {
+    inset: -17px;
+  }
+  .ringGlow {
+    width: 220px;
+    height: 220px;
+  }
+  .ringText p {
+    font-size: 27px;
+  }
+  .ringText span {
+    font-size: 14px;
+  }
+}
+/* =========================================
+   PLATFORM 9¾
+========================================= */
+.platformOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  background: radial-gradient(ellipse at center, rgba(90, 55, 30, 0.18) 0%, rgba(10, 8, 7, 0.88) 55%, rgba(0, 0, 0, 0.98) 100%);
+  backdrop-filter: blur(4px);
+  animation: platformFadeIn 1.2s ease forwards;
+}
+
+/* =========================================
+   SCENE
+========================================= */
+.platformScene {
+  position: relative;
+  width: min(900px, 90vw);
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: platformSceneAppear 1.5s ease forwards;
+}
+
+/* =========================================
+   PLATFORM NUMBER
+========================================= */
+.platformNumber {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  color: #d7c39a;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 100px;
+  font-weight: bold;
+  letter-spacing: -8px;
+  border: 8px solid #725b3d;
+  background: radial-gradient(circle, #40372d 0%, #211d19 65%, #0b0a09 100%);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9), inset 0 0 70px rgba(0, 0, 0, 0.7), 0 0 25px rgba(180, 140, 80, 0.25), 0 0 70px rgba(100, 70, 30, 0.2);
+  animation: platformNumberAppear 1.5s ease, platformNumberFloat 4s ease-in-out 1.5s infinite;
+}
+
+/* немного старого камня */
+.platformNumber::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(210, 190, 145, 0.2);
+  pointer-events: none;
+}
+
+/* =========================================
+   TEXT
+========================================= */
+.platformText {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: #d8c8a5;
+  font-family: Georgia, "Times New Roman", serif;
+  text-shadow: 0 0 10px #000, 0 0 25px #000, 0 0 45px rgba(0, 0, 0, 0.9);
+  opacity: 0;
+  animation: platformTextAppear 1.5s ease 1s forwards;
+}
+
+.platformText p {
+  margin: 0 0 12px;
+  font-size: 36px;
+  letter-spacing: 4px;
+}
+
+.platformText span {
+  display: block;
+  font-size: 18px;
+  color: rgba(216, 200, 165, 0.65);
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+@keyframes platformFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes platformSceneAppear {
+  from {
+    opacity: 0;
+    transform: translateY(80px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes platformNumberAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.3) rotate(-20deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+@keyframes platformNumberFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes platformTextAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* =========================================
+   MOBILE
+========================================= */
+@media (max-width: 600px) {
+  .platformScene {
+    width: 90vw;
+    height: 450px;
+  }
+  .platformNumber {
+    width: 190px;
+    height: 190px;
+    font-size: 72px;
+    border-width: 6px;
+  }
+  .platformText p {
+    font-size: 27px;
+  }
+  .platformText span {
+    font-size: 15px;
+  }
+}
+.hiddenPlatform {
+  position: absolute;
+  top: 50px;
+  right: 50%;
+  bottom: 8px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.025);
+  font-family: Georgia, serif;
+  font-size: 16px;
+  cursor: default;
+  transition: color 0.3s ease;
+}
+
+.hiddenPlatform:hover {
+  color: rgba(255, 255, 255, 0.226);
+  cursor: pointer;
+}
+
+/* =========================================
+   HOBBIT EASTER EGG
+========================================= */
+.hobbitOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  background: radial-gradient(ellipse at center, rgba(45, 75, 35, 0.3) 0%, rgba(12, 22, 12, 0.78) 45%, rgba(0, 0, 0, 0.97) 100%);
+  backdrop-filter: blur(5px);
+  animation: hobbitFadeIn 1.3s ease forwards;
+}
+
+/* =========================================
+   SCENE
+========================================= */
+.hobbitScene {
+  position: relative;
+  width: min(850px, 90vw);
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: hobbitSceneAppear 1.5s ease forwards;
+}
+
+/* =========================================
+   MOON
+========================================= */
+.hobbitMoon {
+  position: absolute;
+  top: 30px;
+  right: 80px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff8d6, #d8d19e 65%, #8e8965);
+  box-shadow: 0 0 20px rgba(235, 230, 175, 0.4), 0 0 60px rgba(210, 210, 150, 0.18);
+  opacity: 0.75;
+  animation: hobbitMoonFloat 5s ease-in-out infinite;
+}
+
+/* =========================================
+   DOOR
+========================================= */
+.hobbitDoor {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  border-radius: 50% 50% 12px 12px;
+  background: radial-gradient(circle at 50% 35%, #6e4829, #3b2516 60%, #1b1009);
+  border: 10px solid #49311d;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9), inset 0 0 70px rgba(0, 0, 0, 0.5), 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(87, 116, 55, 0.2);
+  animation: hobbitDoorAppear 1.8s cubic-bezier(0.17, 0.67, 0.35, 1.2);
+}
+
+/* деревянные дуги */
+.hobbitDoor::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border-radius: 50% 50% 8px 8px;
+  border: 3px solid rgba(180, 135, 75, 0.25);
+  pointer-events: none;
+}
+
+/* ручка */
+.hobbitDoorHandle {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #d8b75c, #806126 65%, #382713);
+  border: 3px solid #4b351b;
+  box-shadow: 0 0 8px rgba(210, 170, 75, 0.4);
+  transform: translateY(-50%);
+}
+
+/* =========================================
+   TEXT
+========================================= */
+.hobbitText {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #d8c89b;
+  text-shadow: 0 0 10px #000, 0 0 25px #000, 0 0 45px rgba(0, 0, 0, 0.95);
+  opacity: 0;
+  animation: hobbitTextAppear 1.5s ease 1s forwards;
+}
+
+.hobbitText p {
+  margin: 0 0 12px;
+  font-size: 38px;
+  letter-spacing: 4px;
+}
+
+.hobbitText span {
+  display: block;
+  max-width: 650px;
+  margin: auto;
+  font-size: 18px;
+  font-style: italic;
+  letter-spacing: 1px;
+  color: rgba(216, 200, 155, 0.65);
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+@keyframes hobbitFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes hobbitSceneAppear {
+  from {
+    opacity: 0;
+    transform: translateY(80px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes hobbitDoorAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.5) rotate(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+@keyframes hobbitMoonFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes hobbitTextAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* =========================================
+   MOBILE
+========================================= */
+@media (max-width: 600px) {
+  .hobbitScene {
+    width: 92vw;
+    height: 520px;
+  }
+  .hobbitDoor {
+    width: 190px;
+    height: 190px;
+    border-width: 7px;
+  }
+  .hobbitDoor::before {
+    inset: 12px;
+  }
+  .hobbitDoorHandle {
+    right: 22px;
+    width: 17px;
+    height: 17px;
+  }
+  .hobbitMoon {
+    top: 30px;
+    right: 25px;
+    width: 70px;
+    height: 70px;
+  }
+  .hobbitText {
+    bottom: 10px;
+  }
+  .hobbitText p {
+    font-size: 28px;
+  }
+  .hobbitText span {
+    padding: 0 20px;
+    font-size: 15px;
+  }
+}
 .burger,
 .userMobile {
   display: none;
@@ -1698,6 +2877,7 @@ body {
     padding: 0 15px;
   }
   .diaryTitle {
+    margin-top: 45px;
     font-size: 24px;
     line-height: 1.3;
     text-align: center;
@@ -1842,6 +3022,12 @@ body {
   }
 }
 @media (max-width: 360px) {
+  .header {
+    width: 100%;
+  }
+  .container {
+    width: 330px;
+  }
   .logo {
     font-size: 15px;
   }
@@ -1864,6 +3050,26 @@ body {
   }
   .column h2 {
     font-size: 18px;
+  }
+  .stats {
+    margin: 0;
+  }
+  .statContenr {
+    width: 340px;
+  }
+  .statsGrid {
+    width: 340px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .statsGrid div {
+    padding: 15px;
+  }
+  .activityFeed {
+    width: 330px;
+    padding: 0;
+  }
+  .memoryCard {
+    width: 330px;
   }
 }
 @media (max-width: 344px) {
